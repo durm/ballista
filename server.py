@@ -17,8 +17,11 @@ def accumulate(x, y):
 @app.route("/")
 def banner():
     categorylist = request.args.getlist("category[]")[:10]
-    choises = reduce(accumulate, categorylist, set())
-    if len(choises) == 0:
+    if  not categorylist:
+        choises = banners2categories.keys()
+    else:
+        choises = reduce(accumulate, categorylist, set())
+    if not choises:
         abort(404)
     banner = random.choice(list(choises))
     dec_shows(banner)
@@ -47,7 +50,7 @@ def dec_shows(banner):
         for category in banners2categories[banner]:
             categories = categories2banners[category]
             categories.remove(banner)
-            if len(categories) == 0:
+            if not categories:
                 del categories2banners[category]
         del banners2categories[banner]
 
