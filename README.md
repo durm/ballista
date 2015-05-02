@@ -1,5 +1,5 @@
 # "Баннерокрутилка"
 
-'''pip install flask'''
+```pip install flask```
 
-'''python server.py <path_to_config>'''
+```python server.py <path_to_config>```
