@@ -1,0 +1,10 @@
+<div>
+	<h4>Stats {{ t }}</h4>
+	<ul>
+	{% for key, value in data.items() %}
+	<li>
+		{{ key }}: {{ value }}
+	</li>
+	{% endfor %}
+	</ul>
+</div>
