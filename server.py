@@ -16,7 +16,7 @@ def accumulate(x, y):
 
 @app.route("/")
 def banner():
-    categorylist = request.args.getlist("category[]")
+    categorylist = request.args.getlist("category[]")[:10]
     choises = reduce(accumulate, categorylist, set())
     if len(choises) == 0:
         abort(404)
